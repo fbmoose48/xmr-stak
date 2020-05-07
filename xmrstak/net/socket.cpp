@@ -26,7 +26,6 @@
 #include "xmrstak/jconf.hpp"
 #include "xmrstak/misc/console.hpp"
 #include "xmrstak/misc/executor.hpp"
-#include "xmrstak/misc/motd.hpp"
 #include "xmrstak/version.hpp"
 
 #ifndef CONF_NO_TLS
@@ -491,7 +490,7 @@ inline void get_motd()
 	socket.close(true);
 
 	if(motd.size() > 0)
-		xmrstak::motd::inst().set_message(std::move(motd));
+		printer::inst()->print_msg(LDEBUG, "no motd");
 	else
 		printer::inst()->print_msg(LDEBUG, "Error receiving motd!");
 }
