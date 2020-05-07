@@ -12,7 +12,6 @@ namespace xmrstak
 
 struct globalStates;
 struct params;
-struct motd;
 
 struct environment
 {
@@ -44,7 +43,6 @@ struct environment
 	executor* pExecutor = nullptr;
 	params* pParams = nullptr;
 	randomX_global_ctx* pGlobalCtx = nullptr;
-	motd* pMotd = nullptr;
 
 	std::mutex update;
 
