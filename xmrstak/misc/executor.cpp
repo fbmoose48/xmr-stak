@@ -35,7 +35,6 @@
 #include "xmrstak/http/webdesign.hpp"
 #include "xmrstak/jconf.hpp"
 #include "xmrstak/misc/console.hpp"
-#include "xmrstak/misc/motd.hpp"
 #include "xmrstak/version.hpp"
 
 #include <algorithm>
@@ -462,26 +461,6 @@ inline void disable_sigpipe()
 #endif
 
 
-void open_motd_link()
-{
-	std::string motd_url = xmrstak::motd::inst().get_url();
-	if(!motd_url.empty())
-	{
-#ifndef _WIN32
-		if(std::system("which xdg-open > /dev/null 2>&1") == 0)
-		{
-			auto ret = std::system((std::string("xdg-open  ") + motd_url + " > /dev/null 2>&1").c_str() );
-			if(ret == 0)
-				printer::inst()->print_msg(L1, (std::string("opening url '") + motd_url + "' with the default browser").c_str());
-			else
-				printer::inst()->print_msg(L1, (std::string("Failed to open url '") + motd_url + "'").c_str());
-		}
-#else
-		HINSTANCE r = ShellExecute(NULL, "open", motd_url.c_str(), NULL, NULL, SW_SHOWNORMAL);
-#endif
-	}
-}
-
 void executor::ex_main()
 {
 	disable_sigpipe();
@@ -651,7 +630,6 @@ void executor::ex_main()
 			}
 			break;
 		case EV_MOTD_LINK:
-			open_motd_link();
 			break;
 
 		case EV_INVALID_VAL:
@@ -742,9 +720,6 @@ void executor::hashrate_report(std::string& out)
 		}
 	}
 
-	std::string motd_server_str = xmrstak::motd::inst().get_message();
-	if(!motd_server_str.empty())
-		printer::inst()->print_coloured_str((char*)motd_server_str.c_str(), motd_server_str.size());
 
 	char num[32];
 	double fTotal[3] = {0.0, 0.0, 0.0};
