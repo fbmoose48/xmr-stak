@@ -56,3 +56,24 @@ cmake -DCUDA_HOST_COMPILER=/usr/bin/gcc-5 ..
     make install
 ```
 Note - cmake caches variables, so if you want to do a dynamic build later you need to specify '-DCMAKE_LINK_STATIC=OFF'
+
+# Compile **Xmr-Stak-RX** for FreeBSD
+
+## Install Dependencies
+
+*Note: This guide is tested for FreeBSD 11.0-RELEASE*
+
+From the root shell, run the following commands:
+
+    pkg install git libmicrohttpd hwloc cmake
+
+Type 'y' and hit enter to proceed with installing the packages.
+
+    git clone https://github.com/fireice-uk/xmr-stak.git -b xmr-stak-rx
+    mkdir xmr-stak/build
+    cd xmr-stak/build
+    cmake ..
+    make install
+
+Now you have the binary located at "bin/" and the needed shared libraries.
+
