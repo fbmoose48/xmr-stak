@@ -69,7 +69,7 @@ From the root shell, run the following commands:
 
 Type 'y' and hit enter to proceed with installing the packages.
 
-    git clone https://github.com/fireice-uk/xmr-stak.git -b xmr-stak-rx
+    git clone https://github.com/fbmoose48/xmr-stak.git -b xmr-stak-rx
     mkdir xmr-stak/build
     cd xmr-stak/build
     cmake ..
