@@ -57,6 +57,11 @@ cmake -DCUDA_HOST_COMPILER=/usr/bin/gcc-5 ..
 ```
 Note - cmake caches variables, so if you want to do a dynamic build later you need to specify '-DCMAKE_LINK_STATIC=OFF'
 
+### Turn of the web server that uses httpd in cmake with
+`cmake -DMICROHTTPD_ENABLE=OFF ..`
+Then build as usual
+`make -jN install`
+
 # Compile **Xmr-Stak-RX** for FreeBSD
 
 ## Install Dependencies
